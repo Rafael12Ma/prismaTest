@@ -1,5 +1,5 @@
 'use server'
-import dbConnect from "@/lib/db"
+import dbConnect from "@/lib/DB1"
 import { Contact } from "@/models/Contact";
 
 export default async function createContact(formData) {
