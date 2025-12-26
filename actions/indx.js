@@ -36,5 +36,6 @@ export async function getPosts() {
 }
 
 export async function DeletePost(postid) {
-
+    
 }
+

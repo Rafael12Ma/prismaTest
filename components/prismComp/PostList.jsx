@@ -6,7 +6,7 @@ export default function PostList({ posts }) {
           posts.map((p) => (
             <li key={p.id}>
               <p>{p.email}</p>
-              {/* <p>{p.password}</p> */}
+              {/* <p>{p.password}</p> s*/}
             </li>
           ))}
       </ul>
