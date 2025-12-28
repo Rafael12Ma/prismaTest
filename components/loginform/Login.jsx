@@ -6,7 +6,7 @@ export default function LoginForm() {
   async function handleGithubSignIn() {
     const data = await authClient.signIn.social({
       provider: "github",
-      callbackURL: "/prism",
+      callbackURL: "/betterauth",
     });
   }
 
