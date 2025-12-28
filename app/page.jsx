@@ -8,7 +8,7 @@ export default async function Home() {
           Auth page
         </h1>
         <Link href="/betterauth">GO to betterAuth page</Link>
-        <Link href="/login">GO to Login</Link>
+        <Link href="/login">GO to Loginn</Link>
       </div>
     </>
   );
