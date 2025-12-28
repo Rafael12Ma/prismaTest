@@ -1,13 +1,13 @@
 'use server'
 
-import { prisma } from "@/lib/db"
+import { db } from "@/lib/db"
 import { Prisma } from "@prisma/client"
 import { revalidatePath } from "next/cache"
 
 //this code it just seeded the data i want to already exist on my database , it is used for display. I can avoid it
 
 export async function seedDb() {
-    await prisma.post.createMany({
+    await db.post.createMany({
         data: [
             { email: "rafaelmaroufidis@yahoo.com" },
             { email: "aspasula@gmail.com" },
@@ -24,7 +24,7 @@ export async function createPost(prevState, formData) {
     const email = formData.get("email")
     const password = formData.get("password")
     try {
-        await prisma.post.create({
+        await db.post.create({
             data: { email, password }
         });
 
@@ -52,13 +52,13 @@ export async function createPost(prevState, formData) {
 
 
 export async function getPosts() {
-    const posts = await prisma.post.findMany();
+    const posts = await db.post.findMany();
     return posts
 }
 
 export async function getPost(prevState, formData) {
     const email = formData.get("one")
-    const post = await prisma.post.findUnique({
+    const post = await db.post.findUnique({
         where: {
             email: email
         }
@@ -74,7 +74,7 @@ export async function DeletePost(prevState, formData) {
     const id = Number(formData.get("id"))
 
     try {
-        await prisma.post.delete({
+        await db.post.delete({
             where: { id }
         });
         console.log("Post deleted successfully!")
