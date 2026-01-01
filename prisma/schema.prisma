@@ -10,8 +10,9 @@ datasource db {
 
 model Post {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
+  email     String   
   password  String?
+  name      String? 
   createdAt DateTime @default(now())
 }
 
@@ -76,10 +77,4 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
-}
-
-
-model test {
-  id        Int      @id @default(autoincrement())
-    
 }

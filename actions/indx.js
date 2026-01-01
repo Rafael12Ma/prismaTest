@@ -23,9 +23,10 @@ export async function seedDb() {
 export async function createPost(prevState, formData) {
     const email = formData.get("email")
     const password = formData.get("password")
+    const name = formData.get("name")
     try {
         await db.post.create({
-            data: { email, password }
+            data: { email, password, name }
         });
 
         console.log("Data inserted successfully");
@@ -51,14 +52,20 @@ export async function createPost(prevState, formData) {
 }
 
 
-export async function getPosts() {
-    const posts = await db.post.findMany();
+export async function getPosts(name) {
+    const posts = await db.post.findMany(
+        {
+            where: {
+                name
+            }
+        }
+    );
     return posts
 }
 
 export async function getPost(prevState, formData) {
     const email = formData.get("one")
-    const post = await db.post.findUnique({
+    const post = await db.post.findMany({
         where: {
             email: email
         }
